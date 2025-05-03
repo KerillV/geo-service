@@ -45,13 +45,14 @@ public class Location {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (!(obj instanceof Location)) return false;   // Проверка типа
 
-        Location other = (Location) obj; // Приведение к типу Location
-        return builing == other.builing &&                 // Сравнение примитивных типов, поэтому используем ==
-                Objects.equals(city, other.city) &&        // Сравнение строковых полей
-                Objects.equals(country, other.country) &&  // Сравнение объектов
-                Objects.equals(street, other.street);      // Сравнение строковых полей
+        if (obj instanceof Location other) {                   // если тип Location
+            return builing == other.builing &&                 // Сравнение примитивных типов, поэтому используем ==
+                    Objects.equals(city, other.city) &&        // Сравнение строковых полей
+                    Objects.equals(country, other.country) &&  // Сравнение объектов
+                    Objects.equals(street, other.street);      // Сравнение строковых полей
+        }
+
+        return false;
     }
-
 }
